@@ -1,3 +1,4 @@
+import * as PIXI from "pixi.js";
 import $getExeName from "./lib/_getExeName";
 import omggif from "./lib/_omggif";
 import upngjs from "./lib/_upng";

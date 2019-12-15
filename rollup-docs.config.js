@@ -5,7 +5,12 @@ export default {
   input: "docs/index.js",
   output: {
     file: "docs-dist/bundle.js",
-    format: "cjs"
+    format: "iife"
   },
-  plugins: [resolve(), commonjs()]
+  plugins: [
+    resolve({}),
+    commonjs({
+      include: "node_modules/**"
+    })
+  ]
 };

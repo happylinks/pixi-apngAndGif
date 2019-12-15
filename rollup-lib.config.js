@@ -4,5 +4,5 @@ module.exports = {
     file: "dist/bundle.js",
     format: "cjs"
   },
-  external: ["omggif", "pako"]
+  external: ["omggif", "pako", "pixi.js"]
 };

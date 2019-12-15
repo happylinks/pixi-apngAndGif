@@ -1,3 +1,4 @@
+import * as PIXI from "pixi.js";
 import PixiApngAndGif from "../src/index.js";
 
 const app = new PIXI.Application();

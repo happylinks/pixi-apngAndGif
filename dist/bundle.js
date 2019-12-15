@@ -2,6 +2,7 @@
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+var PIXI = require('pixi.js');
 var pako = _interopDefault(require('pako'));
 
 var $getExeName = (filePath)=>{
@@ -2035,8 +2036,7 @@ class Image {
    * @return {object} sprite
    */
   updateSprite(src, resource) {
-    let Sprite = PIXI.Sprite,
-      imgSrc = src,
+    let imgSrc = src,
       exeName = $getExeName(imgSrc.toLocaleLowerCase());
 
     exeName = exeName === "gif" || exeName === "png" ? exeName : "other";

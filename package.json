@@ -1,14 +1,14 @@
 {
   "name": "@happylinks/pixi-apngandgif",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Let pixi.js support apng, gif images",
   "main": "./dist/pixi-apngandgif.js",
   "module": "src/index.js",
   "scripts": {
     "build": "npm run build:clean && npm run build:lib",
     "build:lib": "rollup -c rollup-lib.config.js",
-    "build:clean": "rimraf lib",
-    "build-docs": "rimraf docs-dist && rollup -c rollup-docs.config.js && cp -rf docs/index.html docs-dist/",
+    "build:clean": "rm -Rf lib",
+    "build-docs": "rm -Rf docs-dist && rollup -c rollup-docs.config.js && cp -rf docs/index.html docs-dist/",
     "start": "webpack-dev-server",
     "version": "npm run build"
   },
@@ -29,5 +29,8 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^6.0.0",
     "rollup-plugin-commonjs": "^10.1.0"
+  },
+  "peerDependencies": {
+    "pixi.js": "^5.2.0"
   }
 }
