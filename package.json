@@ -1,22 +1,22 @@
 {
-  "name": "pixi-apngandgif",
-  "version": "1.0.0",
+  "name": "@happylinks/pixi-apngandgif",
+  "version": "2.0.0",
   "description": "Let pixi.js support apng, gif images",
-  "main": "./dist/PixiApngAndGif.js",
+  "main": "./dist/pixi-apngandgif.js",
+  "module": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:clean && npm run build:lib",
+    "build:lib": "rollup -c rollup-lib.config.js",
+    "build:clean": "rimraf lib",
+    "build-docs": "rimraf docs-dist && rollup -c rollup-docs.config.js && cp -rf docs/index.html docs-dist/",
+    "start": "webpack-dev-server",
+    "version": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sbfkcel/pixi-apngAndGif.git"
+    "url": "git+https://github.com/happylinks/pixi-apngAndGif.git"
   },
-  "keywords": [
-  	"pixi",
-    "apng",
-    "png",
-    "gif",
-    "canvas"
-  ],
+  "keywords": ["pixi", "apng", "png", "gif", "canvas"],
   "author": "sbfkcel@163.com",
   "license": "MIT",
   "bugs": {
@@ -24,6 +24,10 @@
   },
   "homepage": "https://github.com/sbfkcel/pixi-apngAndGif#readme",
   "dependencies": {
-    "pako": "^1.0.6"
+    "pako": "^1.0.10"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^6.0.0",
+    "rollup-plugin-commonjs": "^10.1.0"
   }
 }

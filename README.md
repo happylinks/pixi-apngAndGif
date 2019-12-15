@@ -2,6 +2,10 @@
 
 Let Pixi.js support apng, gif images. And allow control of its operation.
 
+Forked from: https://github.com/sbfkcel/pixi-apngAndGif
+
+Fork includes the Loader code in the class so you don't have to do that yourself.
+
 ## DEMO
 
 - Global [**Pixi-apngAndGif.js Use the demo**](http://jsbin.com/nodeto/edit?html,js,output)
@@ -9,91 +13,40 @@ Let Pixi.js support apng, gif images. And allow control of its operation.
 
 # USE
 
-### ES6
-
 ```bash
 npm install pixi-apngandgif
 ```
+
 ```javascript
-import PixiApngAndGif from 'pixi-apngandgif'
+import PixiApngAndGif from "../src/index.js";
 
 const app = new PIXI.Application();
-const loader = PIXI.loader,
-    loadOption = {
-        loadType: PIXI.loaders.Resource.LOAD_TYPE.XHR,
-        xhrType: PIXI.loaders.Resource.XHR_RESPONSE_TYPE.BUFFER,
-        crossOrigin:''
-    },
-    imgs = {
-        gif:'http://isparta.github.io/compare/image/dongtai/gif/1.gif',
-        apng:'http://isparta.github.io/compare/image/dongtai/apng/1.png'
-    };
 
-loader.add(imgs.gif,loadOption);
-loader.add(imgs.apng,loadOption);
-loader.load((progress,resources)=>{
-    window.gif = new PixiApngAndGif(imgs.gif,resources);
-    window.apng = new PixiApngAndGif(imgs.apng,resources);
+const imgs = {
+  gif: "http://isparta.github.io/compare/image/dongtai/gif/1.gif",
+  apng: "http://isparta.github.io/compare/image/dongtai/apng/1.png"
+};
 
-    let gifSprite = window.gif.sprite,
-        apngSprite = window.apng.sprite;
+let gif = new PixiApngAndGif(imgs.gif);
+window.gif = gif;
+gif.sprite.x = 0;
+gif.sprite.y = 0;
+app.stage.addChild(gif.sprite);
 
-    gifSprite.x = 100;
-    apngSprite.x = 450;
-
-    gifSprite.y = 160;
-    apngSprite.y = 160;
-
-    app.stage.addChild(gifSprite);
-    app.stage.addChild(apngSprite);
-});
+let apng = new PixiApngAndGif(imgs.apng);
+window.apng = apng;
+apng.sprite.x = 200;
+apng.sprite.y = 0;
+app.stage.addChild(apng.sprite);
 
 document.body.appendChild(app.view);
 ```
-
 
 ### Browser
 
 ```html
 <script src="https://cdn.staticfile.org/pixi.js/4.8.2/pixi.min.js"></script>
 <script src="https://cdn.rawgit.com/sbfkcel/pixi-apngAndGif/master/dist/PixiApngAndGif.js"></script>
-```
-
-### Application code
-
-```javascript
-const app = new PIXI.Application();
-const loader = PIXI.loader,
-    loadOption = {
-        loadType: PIXI.loaders.Resource.LOAD_TYPE.XHR,
-        xhrType: PIXI.loaders.Resource.XHR_RESPONSE_TYPE.BUFFER,
-        crossOrigin:''
-    },
-    imgs = {
-        gif:'https://isparta.github.io/compare/image/dongtai/gif/1.gif',
-        apng:'https://isparta.github.io/compare/image/dongtai/apng/1.png'
-    };
-
-loader.add(imgs.gif,loadOption);
-loader.add(imgs.apng,loadOption);
-loader.load((progress,resources)=>{
-    window.gif = new PixiApngAndGif(imgs.gif,resources);
-    window.apng = new PixiApngAndGif(imgs.apng,resources);
-
-    let gifSprite = window.gif.sprite,
-        apngSprite = window.apng.sprite;
-
-    gifSprite.x = 100;
-    apngSprite.x = 450;
-
-    gifSprite.y = 160;
-    apngSprite.y = 160;
-
-    app.stage.addChild(gifSprite);
-    app.stage.addChild(apngSprite);
-});
-
-document.body.appendChild(app.view);
 ```
 
 ## API
